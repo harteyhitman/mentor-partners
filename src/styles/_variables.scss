@@ -1,0 +1,141 @@
+// src/styles/_variables.module.scss
+
+// Mentor Partners Color Palette - From their website
+$primary: #1E3A8A !default;        // Dark blue (main brand color)
+$secondary: #0E7490 !default;      // Teal blue (secondary brand color)
+$tertiary: #0369A1 !default;       // Medium blue (hover states)
+$accent: #38BDF8 !default;         // Light blue/sky (accents)
+$highlight: #F59E0B !default;      // Amber (highlights, important elements)
+$danger: #DC2626 !default;
+$warning: #F59E0B !default;
+$success: #10B981 !default;
+$info: #0E7490 !default;
+
+// Neutral Colors - Adjusted to complement the blue palette
+$white: #FFFFFF !default;
+$gray-50: #F8FAFC !default;
+$gray-100: #F1F5F9 !default;
+$gray-200: #E2E8F0 !default;
+$gray-300: #CBD5E1 !default;
+$gray-400: #94A3B8 !default;
+$gray-500: #64748B !default;
+$gray-600: #475569 !default;
+$gray-700: #334155 !default;
+$gray-800: #1E293B !default;
+$gray-900: #0F172A !default;
+$black: #000000 !default;
+
+// Semantic Colors
+$text-primary: $gray-800 !default;
+$text-secondary: $gray-600 !default;
+$text-muted: $gray-500 !default;
+$bg-primary: $white !default;
+$bg-secondary: $gray-50 !default;
+$bg-tertiary: $gray-100 !default;
+$border-color: $gray-200 !default;
+
+// Typography
+$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !default;
+$font-family-heading: 'Playfair Display', serif !default;
+
+// Font Sizes - Mobile First
+$text-xs: 0.75rem !default;    // 12px
+$text-sm: 0.875rem !default;   // 14px
+$text-base: 1rem !default;     // 16px
+$text-lg: 1.125rem !default;   // 18px
+$text-xl: 1.25rem !default;    // 20px
+$text-2xl: 1.5rem !default;    // 24px
+$text-3xl: 1.875rem !default;  // 30px
+$text-4xl: 2.25rem !default;   // 36px
+$text-5xl: 3rem !default;      // 48px
+
+// Spacing
+$space-1: 0.25rem !default;    // 4px
+$space-2: 0.5rem !default;     // 8px
+$space-3: 0.75rem !default;    // 12px
+$space-4: 1rem !default;       // 16px
+$space-5: 1.25rem !default;    // 20px
+$space-6: 1.5rem !default;     // 24px
+$space-8: 2rem !default;       // 32px
+$space-10: 2.5rem !default;    // 40px
+$space-12: 3rem !default;      // 48px
+$space-16: 4rem !default;      // 64px
+$space-20: 5rem !default;      // 80px
+
+// Border Radius
+$radius-sm: 0.125rem !default;
+$radius-base: 0.25rem !default;
+$radius-md: 0.375rem !default;
+$radius-lg: 0.5rem !default;
+$radius-xl: 0.75rem !default;
+$radius-2xl: 1rem !default;
+$radius-full: 9999px !default;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05) !default;
+$shadow-base: 0 1px 3px 0 rgba(15, 23, 42, 0.1), 0 1px 2px 0 rgba(15, 23, 42, 0.06) !default;
+$shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -1px rgba(15, 23, 42, 0.06) !default;
+$shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -2px rgba(15, 23, 42, 0.05) !default;
+
+// Gradients
+$gradient-primary: linear-gradient(135deg, $primary 0%, $secondary 100%) !default;
+$gradient-secondary: linear-gradient(135deg, $secondary 0%, $accent 100%) !default;
+$gradient-hero: linear-gradient(135deg, $primary 0%, $tertiary 100%) !default;
+
+// Transitions
+$transition-fast: 150ms ease !default;
+$transition-base: 300ms ease !default;
+$transition-slow: 500ms ease !default;
+
+// Z-index
+$z-dropdown: 1000 !default;
+$z-sticky: 1020 !default;
+$z-fixed: 1030 !default;
+$z-modal: 1040 !default;
+$z-popover: 1050 !default;
+$z-tooltip: 1060 !default;
+$z-preload: 1070 !default;
+
+// Breakpoints
+$breakpoint-sm: 640px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1024px !default;
+$breakpoint-xl: 1280px !default;
+$breakpoint-2xl: 1536px !default;
+
+// Mixins (keep the same as before)
+@mixin mobile {
+  @media (max-width: #{$breakpoint-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-md}) and (max-width: #{$breakpoint-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == mobile {
+    @include mobile { @content; }
+  } @else if $breakpoint == tablet {
+    @include tablet { @content; }
+  } @else if $breakpoint == desktop {
+    @include desktop { @content; }
+  } @else if $breakpoint == large-desktop {
+    @include large-desktop { @content; }
+  }
+}

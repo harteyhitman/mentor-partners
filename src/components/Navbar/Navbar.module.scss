@@ -1,0 +1,419 @@
+// src/components/Navbar/Navbar.module.scss
+@use '../../styles/variables' as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 75px;
+  width: 1200px;
+  z-index: $z-fixed;
+  border-radius: 50px;
+  background: rgba($primary, 0.5);
+  border: 1px solid rgba($secondary, 0.3);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba($secondary, 0.15);
+  padding: 16px 39px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  // Scrolled state - fills the top
+  &.scrolled {
+    top: 0;
+    width: 100%;
+    height: 100px;
+    max-width: 100%;
+    border-radius: 0;
+    background: rgba($primary, 0.95);
+    border: 1px solid rgba($secondary, 0.2);
+    box-shadow: 0 4px 30px rgba($primary, 0.3);
+    backdrop-filter: blur(20px);
+    animation: navbarSlideDown 0.4s ease-out;
+    padding: 20px 100px;
+    @include mobile {
+      height: 70px;
+    }
+  }
+
+  // Hover effects
+  &:not(.scrolled):hover {
+    background: rgba($primary, 0.7);
+    border: 1px solid rgba($secondary, 0.4);
+    box-shadow: 0 0 30px rgba($secondary, 0.25);
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  @media (max-width: 1024px) {
+    width: 90%;
+    padding: 12px 24px;
+  }
+
+  @include tablet {
+    width: 95%;
+    padding: 12px 20px;
+  }
+
+  @include mobile {
+    width: 95%;
+    height: 65px;
+    padding: 12px 20px;
+    justify-content: space-between;
+    top: 1.5rem;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // Changed from center to space-between
+  gap: 2rem;
+  width: 100%;
+
+  @include mobile {
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    border-radius: $radius-base;
+    transition: all 0.3s ease;
+  }
+
+  .navbar.scrolled & img {
+    transform: scale(0.9);
+  }
+}
+
+/* Desktop nav links */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.navLink {
+  text-decoration: none;
+  font-weight: 500;
+  color: rgba($white, 0.9);
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+  font-size: $text-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $secondary, $accent);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    color: $text-primary;
+    text-shadow: 0 0 10px rgba($secondary, 0.6);
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  // Active state for current page
+  &.active {
+    color: $text-primary;
+    
+    &::after {
+      width: 100%;
+      background: $secondary;
+    }
+  }
+
+  .navbar.scrolled & {
+    font-size: $text-primary;
+    padding: 0.4rem 0;
+  }
+}
+
+/* CTA Button Container */
+.ctaContainer {
+  display: flex;
+  align-items: center;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.ctaButton {
+display: flex;
+align-items: center;
+height: 45px !important;
+width: 200px !important;
+justify-content: center;
+}
+
+/* Hamburger Menu */
+.menuButton {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  padding: 8px;
+  border-radius: $radius-base;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba($secondary, 0.1);
+  }
+
+  span {
+    width: 26px;
+    height: 2px;
+    background: $secondary;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  &.active {
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+      background: $secondary;
+    }
+    span:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+      background: $secondary;
+    }
+  }
+
+  @include mobile {
+    display: flex;
+  }
+}
+
+/* Mobile Dropdown Menu */
+.mobileMenu {
+  display: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba($primary, 0.98);
+    border-radius: 16px;
+    border: 1px solid rgba($secondary, 0.25);
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 90%;
+    padding: 1.2rem 0;
+    z-index: 99;
+    box-shadow: 0 20px 40px rgba($primary, 0.3);
+    animation: slideDown 0.4s ease forwards;
+
+    .navbar.scrolled & {
+      top: calc(100% + 0.5rem);
+    }
+  }
+}
+
+.mobileNavLink {
+  color: rgba($white, 0.9);
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: $text-sm;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: $secondary;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    background: rgba($secondary, 0.1);
+    color: $secondary;
+
+    &::after {
+      width: 80%;
+    }
+  }
+}
+
+/* Mobile CTA Button */
+.mobileCTA {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes navbarSlideDown {
+  from {
+    transform: translateX(-50%) translateY(-100%);
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes colorPulse {
+  0% {
+    box-shadow: 0 0 10px rgba($secondary, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba($secondary, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba($secondary, 0.15);
+  }
+}
+
+// Add subtle pulse animation to navbar when not scrolled
+.navbar:not(.scrolled) {
+  animation: colorPulse 4s ease-in-out infinite;
+}
+
+/* Mobile fine-tuning for smaller devices */
+@media (max-width: 480px) {
+  .navbar {
+    top: 1.5rem;
+    height: 60px;
+    width: 92%;
+    padding: 10px 18px;
+
+    &.scrolled {
+      height: 65px;
+    }
+  }
+
+  .logoLink img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menuButton {
+    padding: 6px;
+    
+    span {
+      width: 22px;
+    }
+
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
+  }
+
+  .mobileMenu.active {
+    max-width: 95%;
+    padding: 1rem 0.5rem;
+  }
+
+  .mobileNavLink {
+    padding: 0.8rem;
+    font-size: $text-xs;
+  }
+}
+
+// Landscape orientation adjustments
+@media (orientation: landscape) and (max-height: 600px) {
+  .navbar {
+    top: 1rem;
+    height: 60px;
+
+    &.scrolled {
+      height: 60px;
+    }
+  }
+
+  .mobileMenu.active {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .navbar {
+    transition: none;
+    animation: none;
+  }
+
+  .navLink, .mobileNavLink {
+    transition: none;
+    
+    &::after {
+      transition: none;
+    }
+  }
+
+  .menuButton span {
+    transition: none;
+  }
+}
