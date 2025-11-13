@@ -1,0 +1,329 @@
+// pages/courses/[slug].module.scss
+.courseDetail {
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.spinner {
+  font-size: 1.2rem;
+  color: #718096;
+}
+
+.breadcrumb {
+  padding: 2rem 0 1rem;
+  color: #718096;
+  
+  a {
+    color: #3182ce;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.heroContent {
+  .category {
+    display: inline-block;
+    background: #e2e8f0;
+    color: #4a5568;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #718096;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+}
+
+.meta {
+  margin-bottom: 2rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ratingStars {
+  color: #fbbf24;
+  font-size: 1.2rem;
+}
+
+.ratingValue {
+  color: #718096;
+  font-weight: 600;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.detailItem {
+  color: #4a5568;
+}
+
+.priceSection {
+  margin-bottom: 2rem;
+  
+  .currentPrice {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-right: 1rem;
+  }
+  
+  .originalPrice {
+    font-size: 1.5rem;
+    color: #a0aec0;
+    text-decoration: line-through;
+    margin-right: 1rem;
+  }
+  
+  .discount {
+    background: #48bb78;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  
+  .enrollButton {
+    background: #3182ce;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    
+    &:hover {
+      background: #2c5aa0;
+    }
+  }
+  
+  .wishlistButton {
+    background: white;
+    color: #3182ce;
+    border: 2px solid #3182ce;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #3182ce;
+      color: white;
+    }
+  }
+}
+
+.heroImage {
+  position: relative;
+  
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #ff6b35;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.objectivesList {
+  list-style: none;
+  padding: 0;
+}
+
+.objectiveItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: #4a5568;
+  
+  .checkmark {
+    color: #48bb78;
+    font-weight: bold;
+  }
+}
+
+.requirementsList {
+  list-style: none;
+  padding: 0;
+}
+
+.requirementItem {
+  padding: 0.5rem 0;
+  color: #4a5568;
+  border-bottom: 1px solid #e2e8f0;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.sidebar {
+  .courseCard {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: sticky;
+    top: 2rem;
+  }
+  
+  .cardImage {
+    height: 200px;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .cardContent {
+    padding: 1.5rem;
+    
+    .price {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      
+      .currentPrice {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1a202c;
+        margin-right: 0.5rem;
+      }
+      
+      .originalPrice {
+        font-size: 1.2rem;
+        color: #a0aec0;
+        text-decoration: line-through;
+      }
+    }
+    
+    .enrollButton, .wishlistButton {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .guarantee {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+    color: #718096;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .heroContent {
+    .title {
+      font-size: 2rem;
+    }
+  }
+  
+  .content {
+    grid-template-columns: 1fr;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+  }
+}

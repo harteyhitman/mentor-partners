@@ -1,0 +1,214 @@
+// components/PendoCard.module.scss
+@use '../../styles/variables' as *;
+
+.pendoCard {
+  position: relative;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid transparent;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1.5rem;
+    padding: 2px;
+    background: linear-gradient(135deg, currentColor 0%, transparent 30%, transparent 70%, currentColor 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: subtract;
+    opacity: 0.3;
+    transition: all 0.4s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    
+    &::before {
+      opacity: 0.8;
+      background: linear-gradient(135deg, currentColor 0%, rgba(255, 255, 255, 0.3) 50%, currentColor 100%);
+    }
+    
+    .cardGlow {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+    
+    .ctaArrow {
+      transform: translateX(4px);
+      text-shadow: 0 0 10px currentColor;
+    }
+  }
+}
+
+.cardGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, currentColor 0%, transparent 70%);
+  opacity: 0.1;
+  transition: all 0.4s ease;
+  border-radius: 1.5rem;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: $white;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.description {
+  font-size: 1.1rem;
+  color: $gray-300;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  flex: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: currentColor;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 20px currentColor;
+  
+  &:hover {
+    filter: brightness(1.2);
+  }
+}
+
+.ctaArrow {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+// Color Variants
+.primary {
+  color: $accent;
+  
+  &:hover {
+    box-shadow: 
+      0 20px 40px rgba(56, 189, 248, 0.3),
+      0 0 80px rgba(56, 189, 248, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.secondary {
+  color: $secondary;
+  
+  &:hover {
+    box-shadow: 
+      0 20px 40px rgba(14, 116, 144, 0.3),
+      0 0 80px rgba(14, 116, 144, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.accent {
+  color: $accent;
+  
+  &:hover {
+    box-shadow: 
+      0 20px 40px rgba(56, 189, 248, 0.3),
+      0 0 80px rgba(56, 189, 248, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.highlight {
+  color: $highlight;
+  
+  &:hover {
+    box-shadow: 
+      0 20px 40px rgba(245, 158, 11, 0.3),
+      0 0 80px rgba(245, 158, 11, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.info {
+  color: $info;
+  
+  &:hover {
+    box-shadow: 
+      0 20px 40px rgba(14, 116, 144, 0.3),
+      0 0 80px rgba(14, 116, 144, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.success {
+  color: $success;
+  
+  &:hover {
+    box-shadow: 
+      0 20px 40px rgba(16, 185, 129, 0.3),
+      0 0 80px rgba(16, 185, 129, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+// Mobile Responsive
+@media (max-width: 768px) {
+  .pendoCard {
+    padding: 2rem;
+    
+    &:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+}
+
+// Reduced motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  .pendoCard {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+  
+  .ctaArrow {
+    transition: none;
+  }
+  
+  .backgroundGlow {
+    animation: none;
+  }
+}

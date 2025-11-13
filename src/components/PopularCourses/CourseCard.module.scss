@@ -1,0 +1,233 @@
+// components/CourseCard.module.scss
+.courseCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    
+    .enrollButton {
+      background: #0056b3;
+    }
+  }
+  
+  &.grid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  &.list {
+    display: flex;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}
+
+.cardImage {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  
+  .list & {
+    width: 300px;
+    height: auto;
+    
+    @media (max-width: 768px) {
+      width: 100%;
+      height: 200px;
+    }
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ff6b35;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.categoryTag {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.cardContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  
+  .list & {
+    flex: 1;
+  }
+}
+
+.courseTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.courseDescription {
+  color: #718096;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.courseMeta {
+  margin-bottom: 1rem;
+}
+
+.instructor {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  
+  .instructorLabel {
+    font-size: 0.8rem;
+    color: #718096;
+    margin-right: 0.5rem;
+  }
+  
+  .instructorName {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2d3748;
+  }
+}
+
+.details {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #718096;
+  
+  span {
+    display: flex;
+    align-items: center;
+    
+    &::before {
+      content: '•';
+      margin-right: 0.5rem;
+    }
+    
+    &:first-child::before {
+      content: '';
+      margin-right: 0;
+    }
+  }
+}
+
+.ratingSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ratingStars {
+  color: #fbbf24;
+  font-size: 0.9rem;
+}
+
+.ratingValue {
+  font-size: 0.8rem;
+  color: #718096;
+  font-weight: 600;
+}
+
+.students {
+  font-size: 0.8rem;
+  color: #718096;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.currentPrice {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.originalPrice {
+  font-size: 0.9rem;
+  color: #a0aec0;
+  text-decoration: line-through;
+}
+
+.discount {
+  font-size: 0.75rem;
+  background: #48bb78;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.enrollButton {
+  background: #3182ce;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  
+  &:hover {
+    background: #2c5aa0;
+  }
+}

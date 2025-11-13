@@ -1,10 +1,25 @@
+import InfiniteCarousel from '../components/Alumni/Alumni'
+import CoreFeatures from '../components/CoreFeatures/CoreFeatures'
+import HeroSection from '../components/HeroSection/HeroSection'
+import LearningJourney from '../components/LearningJourney'
+import PopularCourses from '../components/PopularCourses/PopularCourses'
+import PendoSections from '../components/WhoWeServe/WhoWeServe'
+import { coursesData } from '../data/courses'
 import styles from './Features.module.scss'
+
 const Features = () => {
   return (
     <div className={styles.features}>
-        <h1>
-            Features Component
-        </h1>
+      <HeroSection />
+      <InfiniteCarousel />
+      <LearningJourney />
+      <CoreFeatures />
+      <PopularCourses
+        courses={coursesData}
+        title="Master Software Experience Management"
+        subtitle="Boost productivity, reduce costs, and drive growth with our specialized courses"
+      />
+      <PendoSections />
     </div>
   )
 }

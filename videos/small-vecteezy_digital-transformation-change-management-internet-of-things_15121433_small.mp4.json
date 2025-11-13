@@ -1,0 +1,23 @@
+{
+    "status": "ready",
+    "originalFilePath": "videos/small-vecteezy_digital-transformation-change-management-internet-of-things_15121433_small.mp4",
+    "provider": "mux",
+    "providerMetadata": {
+        "mux": {
+            "uploadId": "d4ckIAJhhk01gkn9zuEHq8PNmePwLkS5z7VakbHnEiXw",
+            "assetId": "u9jz23Mzapf02fLktwnxvFe8wuICiVCDteG5FyIe8vDU",
+            "playbackId": "PpQNTWSaTui5RC8dvoPghjplSqy1D8QCsoM8bOElOfw"
+        }
+    },
+    "createdAt": 1762937593842,
+    "updatedAt": 1762937604171,
+    "size": 889940,
+    "sources": [
+        {
+            "src": "https://stream.mux.com/PpQNTWSaTui5RC8dvoPghjplSqy1D8QCsoM8bOElOfw.m3u8",
+            "type": "application/x-mpegURL"
+        }
+    ],
+    "poster": "https://image.mux.com/PpQNTWSaTui5RC8dvoPghjplSqy1D8QCsoM8bOElOfw/thumbnail.webp",
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAwAgCdASoQAAkAAQAcJQBOhgnZEFlj9vzy6AD+/lwIbAPw/Bkn0Y3qiaK28Ltfmt8fvKFq2VovWiv/47QSSmEJv/Hnmk0Whx/xLvzYE0SlbNJRRKHQveyMyC+ednaR7Y6so9aFeNe2zWw7bP1774WknncekpdSgjSgIAAA"
+}

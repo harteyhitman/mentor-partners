@@ -1,0 +1,261 @@
+// HeroSection.module.scss
+.HeroSectionContainer {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.animatedBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.floatingShape1, .floatingShape2 {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  filter: blur(40px);
+}
+
+.floatingShape1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  right: 10%;
+}
+
+.floatingShape2 {
+  width: 200px;
+  height: 200px;
+  bottom: 20%;
+  left: 5%;
+}
+
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 2;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  text-align: center;
+  color: white;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.titleLine {
+  display: block;
+}
+
+.highlight {
+  display: block;
+    background: linear-gradient(135deg, #667eea 0%, #fff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #fff 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.heroSubtitle {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0;
+  opacity: 0.9;
+  color: aliceblue;
+}
+
+.trustedPartners {
+  margin: 1rem 0;
+  
+  .partnersLabel {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+    color: #fff;
+  }
+}
+
+.partnersGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.partnerLogo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  opacity: 0.8;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ctaButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.chevron {
+  width: 3px;
+  height: 10px;
+  background: white;
+  border-radius: 2px;
+  
+  &:nth-child(2) {
+    opacity: 0.7;
+  }
+  
+  &:nth-child(3) {
+    opacity: 0.4;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .HeroSectionContainer {
+    min-height: 600px;
+    height: 80vh;
+  }
+  
+  .heroContent {
+    padding: 0 1rem;
+  }
+  
+  .contentWrapper {
+    gap: 2rem;
+  }
+  
+  .partnersGrid {
+    gap: 1.5rem;
+  }
+  
+  .partnerLogo {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .ctaButton {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+  }
+  
+  .floatingShape1, .floatingShape2 {
+    display: none;
+  }
+}

@@ -1,3 +1,4 @@
+// src/app/page.tsx
 'use client'
 import { useEffect, useState } from "react";
 import Features from "../features/Features";
@@ -5,7 +6,6 @@ import styles from './page.module.scss';
 import PreloadScreen from "../components/PreloadScreen/PreloadScreen";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,14 +32,15 @@ export default function Home() {
         <div className={`${styles.content} ${isLoading ? styles.loading : styles.loaded}`}>
           <div className={styles.homepage}>
             <Navbar />
-            <div className={styles.featuresMain}>
-                          <Features />
+            <div className={styles.contentWrapper}>
+              <div className={styles.featuresMain}>
+                <Features />
+              </div>
+              <Footer />
             </div>
-            <Footer />
           </div>
         </div>
       </main>
     </>
-
   );
 }
