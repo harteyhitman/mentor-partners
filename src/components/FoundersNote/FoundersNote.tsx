@@ -1,7 +1,7 @@
 // components/FoundersNote/FoundersNote.tsx
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, CSSProperties } from 'react';
 import MuxPlayer from '@mux/mux-player-react';
 import styles from './FoundersNote.module.scss';
 
@@ -114,9 +114,11 @@ const FoundersNote = () => {
                   loop
                   onPlay={handlePlay}
                   onPause={handlePause}
-                  style={{
-                    '--controls': 'none', // Hide default controls
-                  }}
+                  style={
+                    {
+                      ['--controls' as any]: 'none' // Hide default controls
+                    } as CSSProperties
+                  }
                 />
                 
                 <div className={styles.videoOverlay}>

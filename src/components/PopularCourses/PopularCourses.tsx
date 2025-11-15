@@ -8,15 +8,30 @@ interface PopularCoursesProps {
   title?: string;
   subtitle?: string;
   viewAllLink?: string;
+  maxCards?: number;
 }
 
 const PopularCourses: React.FC<PopularCoursesProps> = ({
   courses,
   title = "Popular Courses",
   subtitle = "Master new skills with our expert-led courses",
-  viewAllLink = "/courses"
+  viewAllLink = "/courses",
+  maxCards = 6 // Default to 6 cards
 }) => {
-  const featuredCourses = courses.filter(course => course.featured);
+  // Get featured courses first, then take up to maxCards
+  const displayCourses = courses
+    .filter(course => course.featured)
+    .slice(0, maxCards);
+
+  // If we don't have enough featured courses, fill with regular courses
+  if (displayCourses.length < maxCards) {
+    const remainingSlots = maxCards - displayCourses.length;
+    const additionalCourses = courses
+      .filter(course => !course.featured)
+      .slice(0, remainingSlots);
+    
+    displayCourses.push(...additionalCourses);
+  }
 
   return (
     <section className={styles.popularCourses}>
@@ -30,7 +45,7 @@ const PopularCourses: React.FC<PopularCoursesProps> = ({
         </div>
         
         <div className={styles.coursesGrid}>
-          {featuredCourses.map(course => (
+          {displayCourses.map(course => (
             <CourseCard key={course.id} course={course} layout="grid" />
           ))}
         </div>
