@@ -1,5 +1,7 @@
 import InfiniteCarousel from '../components/Alumni/Alumni'
 import CoreFeatures from '../components/CoreFeatures/CoreFeatures'
+import FAQSection from '../components/FAQSection/FAQSection'
+import FoundersNote from '../components/FoundersNote/FoundersNote'
 import HeroSection from '../components/HeroSection/HeroSection'
 import LearningJourney from '../components/LearningJourney'
 import PopularCourses from '../components/PopularCourses/PopularCourses'
@@ -16,10 +18,13 @@ const Features = () => {
       <CoreFeatures />
       <PopularCourses
         courses={coursesData}
-        title="Master Software Experience Management"
-        subtitle="Boost productivity, reduce costs, and drive growth with our specialized courses"
+        title="Popular Courses"
+        subtitle="Boost productivity, reduce costs, 
+        and drive growth with our specialized courses"
       />
       <PendoSections />
+      <FoundersNote />
+       <FAQSection />
     </div>
   )
 }

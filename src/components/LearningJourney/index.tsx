@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, useInView } from "framer-motion";
-import styles from './LeraningJourney.module.scss'
+import styles from './LearningJourney.module.scss'
 
 import Student1 from '../../../public/hero-section/Learning-journey/student1.jpg'
 import Student2 from '../../../public/hero-section/Learning-journey/student2.jpg'

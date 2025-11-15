@@ -204,7 +204,7 @@
 // Dark mode support
 @media (prefers-color-scheme: dark) {
     .carouselItem {
-        background: #1a1a1a;
+        // background: #1a1a1a;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 
         &:hover {
@@ -365,7 +365,7 @@
   }
   
   @media (max-width: 480px) {
-    font-size: 2rem;
+    font-size: 20px;
     margin-bottom: 0.75rem;
   }
 }

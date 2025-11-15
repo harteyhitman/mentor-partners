@@ -5,4 +5,5 @@ export interface PendoSection {
   description: string;
   ctaText: string;
   slug: string;
+  colorVariant?: 'primary' | 'secondary' | 'accent' | 'highlight' | 'info' | 'success';
 }

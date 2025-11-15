@@ -1,0 +1,132 @@
+// components/FAQAccordion.module.scss
+@use '../../styles/variables' as *;
+
+.faqAccordion {
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: $shadow-sm;
+  
+  &:hover {
+    border-color: $gray-300;
+    box-shadow: $shadow-md;
+  }
+  
+  &.open {
+    border-color: $primary;
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.1);
+    
+    .accordionHeader {
+      background: rgba($primary, 0.02);
+    }
+  }
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: $white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  
+  &:hover {
+    background: rgba($primary, 0.02);
+    
+    .question {
+      color: $primary;
+    }
+    
+    .accordionIcon {
+      background: $primary;
+      color: $white;
+    }
+  }
+  
+  @include mobile {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.question {
+  font-size: $text-lg;
+  font-weight: 600;
+  color: $gray-800;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+  padding-right: 1rem;
+  transition: color 0.3s ease;
+  
+  @include mobile {
+    font-size: $text-base;
+  }
+}
+
+.accordionIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: $gray-100;
+  color: $gray-600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  
+  .open & {
+    background: $primary;
+    color: $white;
+  }
+}
+
+.accordionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  
+  .open & {
+    max-height: 500px;
+  }
+}
+
+.answer {
+  padding: 0 2rem 1.5rem;
+  
+  p {
+    color: $gray-600;
+    line-height: 1.6;
+    margin: 0;
+    font-size: $text-base;
+    
+    @include mobile {
+      font-size: $text-sm;
+    }
+  }
+  
+  @include mobile {
+    padding: 0 1.5rem 1.25rem;
+  }
+}
+
+// Reduced motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  .faqAccordion,
+  .accordionHeader,
+  .accordionIcon {
+    transition: none;
+  }
+  
+  .accordionContent {
+    transition: none;
+  }
+}

@@ -6,7 +6,7 @@
   background: rgba(15, 23, 42, 0.7);
   border: 1px solid transparent;
   border-radius: 1.5rem;
-  padding: 2.5rem;
+  padding: 1rem 2.5rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
   backdrop-filter: blur(10px);
@@ -79,34 +79,33 @@
 }
 
 .description {
-  font-size: 1.1rem;
+  // font-size: 1.1rem;
   color: $gray-300;
   line-height: 1.6;
-  margin: 0 0 2rem 0;
   flex: 1;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.ctaLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: currentColor;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 20px currentColor;
+// .ctaLink {
+//   display: inline-flex;
+//   align-items: center;
+//   gap: 0.5rem;
+//   font-size: 1.1rem;
+//   font-weight: 600;
+//   color: currentColor;
+//   text-decoration: none;
+//   transition: all 0.3s ease;
+//   text-shadow: 0 0 20px currentColor;
   
-  &:hover {
-    filter: brightness(1.2);
-  }
-}
+//   &:hover {
+//     filter: brightness(1.2);
+//   }
+// }
 
-.ctaArrow {
-  transition: all 0.3s ease;
-  display: inline-block;
-}
+// .ctaArrow {
+//   transition: all 0.3s ease;
+//   display: inline-block;
+// }
 
 // Color Variants
 .primary {

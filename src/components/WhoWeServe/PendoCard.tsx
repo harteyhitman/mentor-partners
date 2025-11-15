@@ -28,10 +28,10 @@ const PendoCard: React.FC<PendoCardProps> = ({ section, index }) => {
       <div className={styles.content}>
         <h3 className={styles.title}>{section.title}</h3>
         <p className={styles.description}>{section.description}</p>
-        <a href={`/pendo/${section.slug}`} className={styles.ctaLink}>
+        {/* <a href={`/pendo/${section.slug}`} className={styles.ctaLink}>
           {section.ctaText}
-          <span className={styles.ctaArrow}>→</span>
-        </a>
+          <span className={styles.ctaArrow}></span>
+        </a> */}
       </div>
     </div>
   );
