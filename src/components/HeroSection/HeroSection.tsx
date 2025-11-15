@@ -7,6 +7,7 @@ import Slider3 from '../../../public/heroSlider-img/mentor1.jpg'
 import Slider4 from '../../../public/heroSlider-img/coaching1-scaled.jpg'
 import Slider5 from '../../../public/heroSlider-img/gap-analysis-scaled.jpg'
 import Slider6 from '../../../public/heroSlider-img/career-gap-analysis-scaled.jpg'
+import Link from 'next/link';
 interface Slide {
   id: number;
   image: StaticImageData;
@@ -133,9 +134,10 @@ const ImageSlider = () => {
                   <h2 className={styles.title}>{slide.title}</h2>
                   <h3 className={styles.subtitle}>{slide.subtitle}</h3>
                   <p className={styles.description}>{slide.description}</p>
-                  <button className={styles.ctaButton}>
-                    {slide.ctaText}
-                  </button>
+                  <Link href='https://tidycal.com/3e0nwzm/introcall-minute-meeting-1xgv629' className={styles.ctaButton}>
+                    {/* {slide.ctaText} */}
+                    Book a Consultation
+                  </Link>
                 </div>
               </div>
             </div>

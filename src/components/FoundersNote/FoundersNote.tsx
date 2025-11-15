@@ -1,15 +1,13 @@
 // components/FoundersNote/FoundersNote.tsx
 'use client';
 
-import { useState, useRef, useEffect, CSSProperties } from 'react';
-import MuxPlayer from '@mux/mux-player-react';
+import { useState, useEffect } from 'react';
 import styles from './FoundersNote.module.scss';
+import NextVideo from 'next-video';
+import FoundersNoteVideo from '../../../videos/medium-vecteezy_technology-artificial-intelligence-concept_4747810_medium.mp4';
 
 const FoundersNote = () => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [activeAchievement, setActiveAchievement] = useState(0);
-  const videoRef = useRef<any>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
 
   const achievements = [
     {
@@ -45,40 +43,20 @@ const FoundersNote = () => {
     { value: "∞", label: "Passion for Mentoring" }
   ];
 
-  const toggleVideoPlay = () => {
-    if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsVideoPlaying(!isVideoPlaying);
-    }
-  };
-
-  const handlePlay = () => {
-    setIsVideoPlaying(true);
-  };
-
-  const handlePause = () => {
-    setIsVideoPlaying(false);
-  };
-
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveAchievement((prev) => (prev + 1) % achievements.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [achievements.length]);
 
   return (
-    <section className={styles.foundersNote} ref={sectionRef}>
+    <section className={styles.foundersNote}>
       {/* Animated Background Elements */}
       <div className={styles.backgroundElements}>
         <div className={styles.floatingOrb1}></div>
         <div className={styles.floatingOrb2}></div>
         <div className={styles.floatingOrb3}></div>
-        <div className={styles.circuitLines}></div>
       </div>
 
       <div className={styles.container}>
@@ -103,43 +81,14 @@ const FoundersNote = () => {
           <div className={styles.videoSection}>
             <div className={styles.videoContainer}>
               <div className={styles.videoWrapper}>
-                {/* Mux Player */}
-                <MuxPlayer
-                  ref={videoRef}
-                  streamType="on-demand"
-                  playbackId="YOUR_MUX_PLAYBACK_ID_HERE" // Replace with your actual Mux playback ID
+                <NextVideo 
+                  src={FoundersNoteVideo}
                   className={styles.videoPlayer}
-                  poster="../videos/medium-vecteezy_technology-artificial-intelligence-concept_4747810_medium.mp4"
+                  autoPlay
                   muted
                   loop
-                  onPlay={handlePlay}
-                  onPause={handlePause}
-                  style={
-                    {
-                      ['--controls' as any]: 'none' // Hide default controls
-                    } as CSSProperties
-                  }
+                  controls
                 />
-                
-                <div className={styles.videoOverlay}>
-                  <button 
-                    className={`${styles.playButton} ${isVideoPlaying ? styles.playing : ''}`}
-                    onClick={toggleVideoPlay}
-                  >
-                    <div className={styles.playIcon}>
-                      {isVideoPlaying ? '❚❚' : '▶'}
-                    </div>
-                    <span className={styles.playText}>
-                      {isVideoPlaying ? 'Pause Story' : 'Play Founder Story'}
-                    </span>
-                  </button>
-                </div>
-
-                <div className={styles.videoProgress}>
-                  <div className={styles.progressBar}>
-                    <div className={styles.progressFill}></div>
-                  </div>
-                </div>
               </div>
 
               <div className={styles.founderQuote}>
@@ -148,7 +97,7 @@ const FoundersNote = () => {
                   "Our mission is to bridge the gap between ambition and achievement. Every student's success story is a testament to the power of quality education and dedicated mentorship."
                 </blockquote>
                 <div className={styles.founderSignature}>
-                  <span className={styles.signatureName}>— Alex Mentor</span>
+                  <span className={styles.signatureName}>— Darlington Anaele</span>
                   <span className={styles.signatureTitle}>Founder & CEO</span>
                 </div>
               </div>
@@ -191,7 +140,7 @@ const FoundersNote = () => {
           </div>
         </div>
 
-        {/* Achievements Section - Below Video and Timeline */}
+        {/* Achievements Section */}
         <div className={styles.achievementsSection}>
           {/* Rotating Main Achievement */}
           <div className={styles.mainAchievement}>
@@ -223,7 +172,7 @@ const FoundersNote = () => {
             </div>
           </div>
 
-          {/* Founder Personal Stats and Global Presence */}
+          {/* Founder Stats */}
           <div className={styles.statsAndGlobal}>
             <div className={styles.founderStats}>
               <h4 className={styles.statsTitle}>Founder's Journey</h4>

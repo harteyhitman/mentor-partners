@@ -78,7 +78,7 @@ export default function Navbar() {
         {/* CTA Button - Desktop */}
         <div className={styles.ctaContainer}>
           <CTAButton 
-            href="#contact" 
+            href="https://tidycal.com/3e0nwzm/introcall-minute-meeting-1xgv629" 
             variant="primary" 
             size="sm"
             className={styles.ctaButton}
