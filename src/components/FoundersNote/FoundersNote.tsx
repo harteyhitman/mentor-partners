@@ -84,8 +84,8 @@ const FoundersNote = () => {
                 <NextVideo 
                   src={FoundersNoteVideo}
                   className={styles.videoPlayer}
-                  autoPlay
-                  muted
+                //   autoPlay
+                //   muted
                   loop
                   controls
                 />

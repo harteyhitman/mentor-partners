@@ -1,0 +1,307 @@
+// components/VideoTestimonials/VideoTestimonials.module.scss
+.videoTestimonials {
+  position: relative;
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  overflow: hidden;
+
+  .backgroundElements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    .floatingOrb1 {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floatingOrb2 {
+      position: absolute;
+      top: 60%;
+      right: 10%;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    .floatingOrb3 {
+      position: absolute;
+      bottom: 20%;
+      left: 20%;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+      animation: float 10s ease-in-out infinite;
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  // Header Styles
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    .sectionLabel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+
+      .labelLine {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, #3b82f6, transparent);
+      }
+
+      .labelText {
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #3b82f6;
+      }
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: white;
+      margin-bottom: 1.5rem;
+
+      .highlight {
+        background: linear-gradient(135deg, #3b82f6, #ec4899);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: #9ca3af;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+
+  // Testimonials Grid
+  .testimonialsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .testimonialCard {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: rgba(59, 130, 246, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .videoContainer {
+    position: relative;
+    width: 100%;
+
+    .videoWrapper {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+
+      .videoPlayer {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0;
+      }
+    }
+  }
+
+  .testimonialContent {
+    padding: 2rem;
+
+    .quoteSection {
+      margin-bottom: 1.5rem;
+
+      .quoteIcon {
+        font-size: 2rem;
+        color: #3b82f6;
+        margin-bottom: 0.5rem;
+      }
+
+      .quote {
+        font-size: 1.125rem;
+        font-style: italic;
+        color: #e5e7eb;
+        line-height: 1.6;
+        margin: 0;
+      }
+    }
+
+    .testimonialInfo {
+      .personInfo {
+        margin-bottom: 1rem;
+
+        .personName {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: white;
+          margin: 0 0 0.25rem 0;
+        }
+
+        .personRole {
+          font-size: 0.875rem;
+          color: #3b82f6;
+          margin: 0 0 0.25rem 0;
+        }
+
+        .personCompany {
+          font-size: 0.875rem;
+          color: #9ca3af;
+          margin: 0;
+        }
+      }
+
+      .description {
+        p {
+          color: #d1d5db;
+          line-height: 1.6;
+          margin: 0;
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+
+  // Stats Section
+  .statsSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    .statItem {
+      text-align: center;
+
+      .statNumber {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #3b82f6, #ec4899);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+      }
+
+      .statLabel {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #9ca3af;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .videoTestimonials {
+    padding: 4rem 0;
+
+    .header {
+      .title {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1.125rem;
+      }
+    }
+
+    .testimonialsGrid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .testimonialCard {
+      margin: 0 1rem;
+    }
+
+    .statsSection {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      padding: 2rem 1rem;
+
+      .statItem .statNumber {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .videoTestimonials {
+    .container {
+      padding: 0 1rem;
+    }
+
+    .testimonialsGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonialContent {
+      padding: 1.5rem;
+    }
+
+    .statsSection {
+      grid-template-columns: 1fr;
+    }
+  }
+}

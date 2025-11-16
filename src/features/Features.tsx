@@ -5,6 +5,7 @@ import FoundersNote from '../components/FoundersNote/FoundersNote'
 import HeroSection from '../components/HeroSection/HeroSection'
 import LearningJourney from '../components/LearningJourney'
 import PopularCourses from '../components/PopularCourses/PopularCourses'
+import VideoTestimonials from '../components/VideoTestimonials/VideoTestimonials'
 import PendoSections from '../components/WhoWeServe/WhoWeServe'
 import { coursesData } from '../data/courses'
 import styles from './Features.module.scss'
@@ -24,6 +25,7 @@ const Features = () => {
       />
       <PendoSections />
       <FoundersNote />
+      <VideoTestimonials />
        <FAQSection />
     </div>
   )
