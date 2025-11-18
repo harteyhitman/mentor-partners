@@ -1,0 +1,354 @@
+// src/components/MentorsSection/MentorsSection.module.scss
+@use '../../styles/variables' as *;
+
+.mentorsSection {
+  padding: $space-20 0;
+  background: linear-gradient(135deg, rgba($primary, 0.02) 0%, rgba($secondary, 0.02) 100%);
+  
+  @include mobile {
+    padding: $space-16 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $space-6;
+}
+
+// Header Styles
+.header {
+  text-align: center;
+  margin-bottom: $space-16;
+  
+  @include mobile {
+    margin-bottom: $space-12;
+  }
+}
+
+.title {
+  font-family: $font-family-heading;
+  font-size: $text-4xl;
+  font-weight: 700;
+  color: $primary;
+  margin-bottom: $space-4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  
+  @include mobile {
+    font-size: $text-2xl;
+    letter-spacing: 0.05em;
+  }
+}
+
+.underline {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, $secondary, $accent);
+  margin: 0 auto $space-6;
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-family: $font-family-primary;
+  font-size: $text-lg;
+  color: rgba($primary, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  
+  @include mobile {
+    font-size: $text-base;
+    padding: 0 $space-4;
+  }
+}
+
+// Mentors Grid
+.mentorsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-8;
+  margin-bottom: $space-16;
+  
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+    margin-bottom: $space-12;
+  }
+}
+
+// Mentor Card
+.mentorCard {
+  position: relative;
+  background: $white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba($primary, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba($primary, 0.15);
+    
+    .mentorImage {
+      transform: scale(1.05);
+    }
+    
+    .cardOverlay {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// Image Styles
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  
+  @include mobile {
+    height: 240px;
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.mentorImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  // Optimize for LCP
+  will-change: transform;
+}
+
+.imageFallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, $secondary, $accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family-heading;
+  font-size: $text-3xl;
+  font-weight: 700;
+  color: $white;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 60%, rgba($primary, 0.1));
+  pointer-events: none;
+}
+
+// Mentor Info
+.mentorInfo {
+  padding: $space-6;
+  text-align: center;
+}
+
+.mentorName {
+  font-family: $font-family-heading;
+  font-size: $text-xl;
+  font-weight: 600;
+  color: $primary;
+  margin-bottom: $space-2;
+  line-height: 1.3;
+}
+
+.mentorRole {
+  font-family: $font-family-primary;
+  font-size: $text-base;
+  color: $secondary;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+// Card Overlay (Hover Effect)
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba($primary, 0.95), rgba($secondary, 0.95));
+  color: $white;
+  padding: $space-6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.overlayContent {
+  text-align: center;
+  
+  h4 {
+    font-family: $font-family-heading;
+    font-size: $text-lg;
+    font-weight: 600;
+    margin-bottom: $space-3;
+    color: $white;
+  }
+}
+
+.mentorBio {
+  font-family: $font-family-primary;
+  font-size: $text-sm;
+  line-height: 1.5;
+  margin-bottom: $space-4;
+  opacity: 0.9;
+}
+
+.expertise {
+  margin-bottom: $space-6;
+  
+  h5 {
+    font-family: $font-family-primary;
+    font-size: $text-xs;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: $space-3;
+    color: rgba($white, 0.8);
+  }
+}
+
+.expertiseTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  justify-content: center;
+}
+
+.expertiseTag {
+  background: rgba($white, 0.15);
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  font-size: $text-xs;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba($white, 0.2);
+}
+
+.profileButton {
+  background: $white;
+  color: $primary;
+  border: none;
+  padding: $space-3 $space-6;
+  border-radius: $radius-full;
+  font-family: $font-family-primary;
+  font-size: $text-sm;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba($white, 0.9);
+    transform: translateY(-2px);
+  }
+}
+
+// CTA Section
+.ctaSection {
+  text-align: center;
+  padding: $space-12;
+  background: $white;
+  border-radius: $radius-lg;
+  box-shadow: 0 4px 20px rgba($primary, 0.08);
+  
+  @include mobile {
+    padding: $space-8;
+  }
+}
+
+.ctaText {
+  font-family: $font-family-primary;
+  font-size: $text-lg;
+  color: $primary;
+  margin-bottom: $space-6;
+  font-weight: 500;
+  
+  @include mobile {
+    font-size: $text-base;
+  }
+}
+
+.ctaButton {
+  background: linear-gradient(135deg, $secondary, $accent);
+  color: $white;
+  border: none;
+  padding: $space-4 $space-8;
+  border-radius: $radius-full;
+  font-family: $font-family-primary;
+  font-size: $text-base;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba($secondary, 0.3);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba($secondary, 0.4);
+  }
+  
+  @include mobile {
+    padding: $space-3 $space-6;
+    font-size: $text-sm;
+  }
+}
+
+// Animation for card entrance
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mentorCard {
+  animation: fadeInUp 0.6s ease-out;
+  
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .mentorCard,
+  .mentorImage,
+  .cardOverlay,
+  .profileButton,
+  .ctaButton {
+    animation: none;
+    transition: none;
+  }
+  
+  .mentorCard:hover {
+    transform: none;
+  }
+}
