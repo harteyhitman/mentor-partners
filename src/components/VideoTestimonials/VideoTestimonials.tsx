@@ -5,8 +5,8 @@ import { useState, useRef } from 'react';
 import styles from './VideoTestimonials.module.scss';
 import NextVideo from 'next-video';
 // Import your video files
-import MrsMarvellowsVideo from '../../../videos/Angela-Testimonial-1.mp4';
-import ChiefNwogbeVideo from '../../../videos/GS-Testimonial.mp4';
+import MrsMarvellowsVideo from '../../../videos/angella-watermark-remover-fulll.mp4';
+import ChiefNwogbeVideo from '../../../videos/gideon-veed.mp4';
 
 const VideoTestimonials = () => {
     const [activeVideo, setActiveVideo] = useState<number | null>(null);
@@ -79,20 +79,22 @@ const VideoTestimonials = () => {
                 <div className={styles.testimonialsGrid}>
                     {testimonials.map((testimonial, index) => (
                         <div key={testimonial.id} className={styles.testimonialCard}>
-                            {/* Video Container */}
-                            <div className={styles.videoContainer}>
-                                <div className={styles.videoWrapper}>
-                                    <NextVideo
-                                        ref={(el) => {
-                                            videoRefs.current[index] = el;
-                                        }}
-                                        src={testimonial.video}
-                                        className={styles.videoPlayer}
-                                        // poster={testimonial.thumbnail}
-                                        controls
-                                        onPlay={() => handleVideoPlay(index)}
-                                        onEnded={() => handleVideoEnd(index)}
-                                    />
+                            {/* Video Container - Fixed for full display */}
+                            <div className={styles.videoSection}>
+                                <div className={styles.videoContainer}>
+                                    <div className={styles.videoWrapper}>
+                                        <NextVideo
+                                            ref={(el) => {
+                                                videoRefs.current[index] = el;
+                                            }}
+                                            src={testimonial.video}
+                                            className={styles.videoPlayer}
+                                            // poster={testimonial.thumbnail}
+                                            controls
+                                            onPlay={() => handleVideoPlay(index)}
+                                            onEnded={() => handleVideoEnd(index)}
+                                        />
+                                    </div>
                                 </div>
                             </div>
 

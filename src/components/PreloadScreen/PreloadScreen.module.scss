@@ -7,348 +7,78 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, $primary 0%, $primary 50%, $primary 100%);
+  background: $white;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: $z-preload;
   overflow: hidden;
   font-family: $font-family-primary;
-  perspective: 1000px;
 
   // Entrance Animation
   &.entering {
-    // opacity: 0;
-    
     .logoContainer,
-    .progressContainer,
-    .connectionLines {
+    .progressContainer {
       opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .companyLogo {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-
-    .curtainLeft, .curtainRight {
-      transform: translateX(0);
+      transform: translateY(20px);
     }
   }
 
   // Animating State
   &.animating {
-    opacity: 1;
-    transition: opacity 0.8s ease-out;
-
     .logoContainer {
       opacity: 1;
       transform: translateY(0);
-      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
     }
 
     .progressContainer {
       opacity: 1;
       transform: translateY(0);
-      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
     }
 
-    .connectionLines {
-      opacity: 1;
-      transition: opacity 0.8s ease-out 0.9s;
+    // Logo bounce animation
+    .logoBounce {
+      animation: logoBounce 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s both;
     }
 
-    .companyLogo {
-      opacity: 1;
-      transform: scale(1);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s;
+    // Brand name fade in
+    .brandName {
+      animation: fadeInUp 0.8s ease-out 0.8s both;
     }
 
-    // Curtains open
-    .curtainLeft {
-      transform: translateX(-100%);
-      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.2s;
-    }
-
-    .curtainRight {
-      transform: translateX(100%);
-      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.2s;
-    }
-
-    // Logo reveal animation
-    .logoPart1 {
-      animation: slideInFromLeft 1s ease-out 0.8s both;
-    }
-
-    .logoPart2 {
-      animation: slideInFromRight 1s ease-out 1s both;
-    }
-
-    .logoSubtitle {
-      animation: fadeInUp 0.8s ease-out 1.4s both;
-    }
-
-    // Orbit animation
-    .orbitRing {
-      animation: rotate 20s linear infinite;
-    }
-
-    .orbitDot1 {
-      animation: orbit 4s linear infinite;
-    }
-
-    .orbitDot2 {
-      animation: orbit 6s linear infinite reverse;
-    }
-
-    .orbitDot3 {
-      animation: orbit 5s linear infinite 1s;
-    }
-
-    // Company logo subtle pulse
-    .companyLogo {
-      animation: logoPulse 3s ease-in-out infinite 2s;
-    }
-
-    // Progress animations
+    // Progress bar fill
     .progressFill {
       width: 100%;
-      transition: width 3s cubic-bezier(0.65, 0, 0.35, 1);
+      transition: width 2s cubic-bezier(0.65, 0, 0.35, 1);
     }
-
-    .progressPulse {
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    // Connection lines animation
-    .line1 { animation: drawLine 1.5s ease-out 1.2s both; }
-    .line2 { animation: drawLine 1.5s ease-out 1.5s both; }
-    .line3 { animation: drawLine 1.5s ease-out 1.8s both; }
-
-    // Floating shapes
-    .shape1 { animation: float 8s ease-in-out infinite; }
-    .shape2 { animation: float 10s ease-in-out infinite 1s; }
-    .shape3 { animation: float 9s ease-in-out infinite 2s; }
-    .shape4 { animation: float 7s ease-in-out infinite 3s; }
-
-    // Light beams
-    .lightBeam1 { animation: lightSweep 8s ease-in-out infinite; }
-    .lightBeam2 { animation: lightSweep 10s ease-in-out infinite 2s; }
-    .lightBeam3 { animation: lightSweep 12s ease-in-out infinite 4s; }
   }
 
-  // Exiting State - Content fades out
+  // Exiting State
   &.exiting {
     .logoContainer {
-      transform: scale(0.95) translateY(-20px);
+      transform: scale(0.9);
       opacity: 0;
-      transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+      transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     }
 
     .progressContainer {
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-
-    .companyLogo {
-      transform: scale(1.1) rotate(5deg);
-      opacity: 0;
-      transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-
-    .connectionLines {
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-  }
-
-  // Closing State - Curtains close
-  &.closing {
-    .curtainLeft {
-      transform: translateX(0);
-      transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1) 0.2s;
-    }
-
-    .curtainRight {
-      transform: translateX(0);
-      transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1) 0.2s;
-    }
-
-    .content {
-      // opacity: 0;
-      transform: scale(0.9);
-      transition: all 0.6s ease-in-out;
-    }
-
-    .vignette {
-      // opacity: 0;
-      transition: opacity 0.5s ease-in-out;
+      transform: translateY(10px);
+      transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     }
   }
 }
 
-// Cinematic Curtains
-.curtainLeft, .curtainRight {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, $primary 0%, darken($primary, 10%) 100%);
-  z-index: 10;
-  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.curtainLeft {
-  left: 0;
-  transform: translateX(-100%);
-  box-shadow: 10px 0 30px rgba($black, 0.5);
-}
-
-.curtainRight {
-  right: 0;
-  transform: translateX(100%);
-  box-shadow: -10px 0 30px rgba($black, 0.5);
-}
-
-// Film Grain Effect
-.filmGrain {
+// Background
+.background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  opacity: 0.1;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 1;
-}
-
-// Vignette Effect
-.vignette {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(ellipse at center, transparent 40%, rgba($black, 0.4) 100%);
-  pointer-events: none;
-  z-index: 2;
-}
-
-// Background Elements
-.backgroundElements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.circuitGrid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba($secondary, 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba($accent, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px, 30px 30px;
-  opacity: 0.4;
-}
-
-.floatingShapes {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.shape1, .shape2, .shape3, .shape4 {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba($secondary, 0.15) 0%, transparent 70%);
-  filter: blur(15px);
-}
-
-.shape1 {
-  width: 120px;
-  height: 120px;
-  top: 15%;
-  left: 10%;
-  background: radial-gradient(circle, rgba($secondary, 0.2) 0%, transparent 70%);
-}
-
-.shape2 {
-  width: 80px;
-  height: 80px;
-  top: 70%;
-  right: 20%;
-  background: radial-gradient(circle, rgba($accent, 0.15) 0%, transparent 70%);
-}
-
-.shape3 {
-  width: 100px;
-  height: 100px;
-  bottom: 30%;
-  left: 15%;
-  background: radial-gradient(circle, rgba($highlight, 0.1) 0%, transparent 70%);
-}
-
-.shape4 {
-  width: 60px;
-  height: 60px;
-  top: 40%;
-  right: 10%;
-  background: radial-gradient(circle, rgba($secondary, 0.25) 0%, transparent 70%);
-}
-
-.particleField {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle, rgba($white, 0.3) 1px, transparent 1px);
-  background-size: 100px 100px;
-  animation: particleFloat 20s linear infinite;
-  opacity: 0.1;
-}
-
-// Cinematic Light Beams
-.lightBeam1, .lightBeam2, .lightBeam3 {
-  position: absolute;
-  width: 200%;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba($accent, 0.3) 15%, 
-    rgba($secondary, 0.6) 50%, 
-    rgba($accent, 0.3) 85%, 
-    transparent 100%);
-  filter: blur(10px);
-  transform-origin: left center;
-  pointer-events: none;
-}
-
-.lightBeam1 {
-  top: 20%;
-  left: -100%;
-  transform: rotate(15deg);
-}
-
-.lightBeam2 {
-  top: 50%;
-  left: -100%;
-  transform: rotate(0deg);
-}
-
-.lightBeam3 {
-  top: 80%;
-  left: -100%;
-  transform: rotate(-15deg);
+  background: $white;
 }
 
 // Main Content
@@ -357,242 +87,80 @@
   z-index: 5;
   text-align: center;
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   padding: 0 $space-6;
-  transition: all 0.6s ease-in-out;
 }
 
 // Logo Container
 .logoContainer {
-  position: relative;
   margin-bottom: $space-12;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: $space-6;
 }
 
-.logoOrbit {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin-bottom: $space-8;
-}
-
-.orbitRing {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 180px;
-  height: 180px;
-  border: 1px solid rgba($secondary, 0.3);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.orbitDot1, .orbitDot2, .orbitDot3 {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: $secondary;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-}
-
-.orbitDot1 { transform: translate(-50%, -50%) rotate(0deg) translateX(90px); }
-.orbitDot2 { transform: translate(-50%, -50%) rotate(120deg) translateX(90px); }
-.orbitDot3 { transform: translate(-50%, -50%) rotate(240deg) translateX(90px); }
-
-// Company Logo Styles
-.companyLogo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-}
-
-.logoWrapper {
+.logoBounce {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 80px;
-}
-
-.logoPlaceholder {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, $secondary, $accent);
-  border-radius: $radius-lg;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 32px rgba($secondary, 0.3);
-  border: 2px solid rgba($white, 0.1);
-}
-
-.logoInitials {
-  font-family: $font-family-heading;
-  font-size: $text-lg;
-  font-weight: 700;
-  color: $white;
-  letter-spacing: 0.05em;
 }
 
 .logoImage {
   border-radius: $radius-lg;
-  box-shadow: 0 8px 32px rgba($secondary, 0.3);
-  // border: 2px solid rgba($white, 0.1);
+  box-shadow: 0 10px 30px rgba($primary, 0.15);
+  transform-origin: center;
 }
 
-.mainLogo {
-  position: relative;
-  z-index: 2;
-}
-
-.logoReveal {
-  overflow: hidden;
+.brandName {
+  text-align: center;
 }
 
 .logoText {
   font-family: $font-family-heading;
-  font-size: $text-5xl;
+  font-size: $text-4xl;
   font-weight: 700;
-  color: $white;
-  margin: 0;
+  color: $primary;
+  margin: 0 0 $space-3 0;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  text-shadow: 0 10px 30px rgba($black, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  
   @include mobile {
-    font-size: $text-4xl;
+    font-size: $text-3xl;
   }
 }
 
-.logoPart1, .logoPart2 {
-  display: block;
-}
-
-.logoPart1 {
-  color: $white;
-}
-
-.logoPart2 {
-  color: $secondary;
-  margin-top: $space-2;
-}
-
-.logoSubtitle {
+.tagline {
   font-family: $font-family-primary;
-  font-size: $text-lg;
+  font-size: $text-base;
   font-weight: 400;
-  color: rgba($white, 0.8);
-  letter-spacing: 0.2em;
+  color: rgba($primary, 0.7);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-top: $space-6;
   font-weight: 300;
-}
-
-.logoGlow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba($secondary, 0.1) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
-  filter: blur(40px);
-  z-index: 1;
-}
-
-// Connection Lines
-.connectionLines {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  opacity: 0;
-}
-
-.line1, .line2, .line3 {
-  position: absolute;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba($secondary, 0.5), transparent);
-  top: 0;
-}
-
-.line1 {
-  width: 0;
-  left: 10%;
-  animation-delay: 1s;
-}
-
-.line2 {
-  width: 0;
-  left: 30%;
-  animation-delay: 1.3s;
-}
-
-.line3 {
-  width: 0;
-  left: 50%;
-  animation-delay: 1.6s;
+  
+  @include mobile {
+    font-size: $text-sm;
+  }
 }
 
 // Progress Container
 .progressContainer {
-  max-width: 400px;
+  max-width: 300px;
   margin: 0 auto;
-}
-
-.progressInfo {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: $space-4;
-}
-
-.percentage {
-  font-family: $font-family-primary;
-  font-size: $text-2xl;
-  font-weight: 700;
-  color: $secondary;
-}
-
-.statusText {
-  font-family: $font-family-primary;
-  font-size: $text-sm;
-  color: rgba($white, 0.7);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 500;
+  gap: $space-4;
 }
 
 .progressBar {
   position: relative;
   width: 100%;
-  height: 4px;
-  background: rgba($white, 0.1);
+  height: 3px;
+  background: rgba($primary, 0.1);
   border-radius: $radius-sm;
   overflow: hidden;
-  margin-bottom: $space-8;
-}
-
-.progressTrack {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba($secondary, 0.3) 50%, 
-    transparent 100%);
 }
 
 .progressFill {
@@ -605,103 +173,35 @@
   border-radius: $radius-sm;
 }
 
-.progressPulse {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20px;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, $accent);
-  filter: blur(8px);
-  transform: translateX(50%);
-}
-
-.loadingSteps {
-  display: flex;
-  justify-content: space-between;
-  margin-top: $space-6;
-}
-
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $space-2;
-  flex: 1;
-}
-
-.stepDot {
-  width: 8px;
-  height: 8px;
-  background: rgba($white, 0.3);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.step:nth-child(1) .stepDot { animation: activateStep 0.5s ease-out 0.5s both; }
-.step:nth-child(2) .stepDot { animation: activateStep 0.5s ease-out 1.5s both; }
-.step:nth-child(3) .stepDot { animation: activateStep 0.5s ease-out 2.5s both; }
-
-.step span {
-  font-size: $text-xs;
-  color: rgba($white, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-}
-
-// Signature
-.signature {
-  position: absolute;
-  bottom: $space-8;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 5;
-}
-
-.signatureLine {
-  width: 100px;
-  height: 1px;
-  background: rgba($secondary, 0.5);
-  margin: 0 auto $space-2;
-}
-
-.signatureText {
+.percentage {
   font-family: $font-family-primary;
-  font-size: $text-xs;
-  color: rgba($white, 0.5);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-weight: 300;
+  font-size: $text-sm;
+  font-weight: 600;
+  color: $primary;
 }
 
 // Keyframe Animations
-@keyframes slideInFromLeft {
-  from {
-    // opacity: 0;
-    transform: translateX(-50px);
+@keyframes logoBounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-50px);
   }
-  to {
+  50% {
     opacity: 1;
-    transform: translateX(0);
+    transform: scale(1.1) translateY(10px);
   }
-}
-
-@keyframes slideInFromRight {
-  from {
-    // opacity: 0;
-    transform: translateX(50px);
+  70% {
+    transform: scale(0.9) translateY(-5px);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: scale(1) translateY(0);
   }
 }
 
 @keyframes fadeInUp {
   from {
-    // opacity: 0;
+    opacity: 0;
     transform: translateY(20px);
   }
   to {
@@ -710,128 +210,16 @@
   }
 }
 
-@keyframes rotate {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes orbit {
-  from { transform: translate(-50%, -50%) rotate(0deg) translateX(90px) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg) translateX(90px) rotate(-360deg); }
-}
-
-@keyframes logoPulse {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.05);
-    opacity: 0.9;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-@keyframes drawLine {
-  from { width: 0; }
-  to { width: 40%; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0) scale(1); }
-  33% { transform: translateY(-30px) translateX(15px) scale(1.1); }
-  66% { transform: translateY(20px) translateX(-10px) scale(0.9); }
-}
-
-@keyframes particleFloat {
-  from { transform: translateY(0); }
-  to { transform: translateY(-100px); }
-}
-
-@keyframes activateStep {
-  from { 
-    background: rgba($white, 0.3);
-    transform: scale(1);
-  }
-  to { 
-    background: $secondary;
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba($secondary, 0.5);
-  }
-}
-
-@keyframes lightSweep {
-  0% {
-    transform: rotate(15deg) translateX(-100%);
-  }
-  50% {
-    transform: rotate(15deg) translateX(100%);
-  }
-  100% {
-    transform: rotate(15deg) translateX(-100%);
-  }
-}
-
 // Responsive Design
 @include mobile {
-  .logoText {
-    font-size: $text-3xl;
-  }
-
-  .logoSubtitle {
-    font-size: $text-sm;
-    letter-spacing: 0.15em;
-  }
-
-  .logoOrbit {
-    width: 150px;
-    height: 150px;
-  }
-
-  .orbitRing {
-    width: 140px;
-    height: 140px;
-  }
-
-  .orbitDot1, .orbitDot2, .orbitDot3 {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(70px);
-  }
-
-  .logoWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-  }
-
-  .logoPlaceholder {
-    width: 50px;
-    height: 50px;
-  }
-
-  .logoInitials {
-    font-size: $text-base;
-  }
-
-  .progressInfo {
-    flex-direction: column;
-    gap: $space-2;
-  }
-
-  .loadingSteps {
-    flex-direction: column;
+  .logoContainer {
+    margin-bottom: $space-8;
     gap: $space-4;
   }
 
-  // Adjust curtains for mobile
-  .curtainLeft, .curtainRight {
-    width: 50%;
+  .logoImage {
+    width: 80px;
+    height: 80px;
   }
 }
 
