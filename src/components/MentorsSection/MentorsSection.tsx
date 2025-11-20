@@ -7,7 +7,7 @@ import styles from './MentorsSection.module.scss';
 
 import Darlington from '../../../public/mentors-photos/Mentor-bio-Darlington.png';
 import Udeze from '../../../public/mentors-photos/UDEZE.jpg';
-import Nnamdi from '../../../public/mentors-photos/IGECHI-MENTOR-PIC.jpg';
+import Igechi from '../../../public/mentors-photos/IGECHI-MENTOR-PIC.jpg';
 
 interface Mentor {
   id: number;
@@ -42,7 +42,7 @@ const MentorsSection: React.FC = () => {
       id: 3,
       name: 'Igechi Worlu',
       role: 'Scrum Master',
-      image: Nnamdi,
+      image: Igechi,
       bio: 'Agile coach and Scrum Master dedicated to helping teams achieve their full potential through agile practices.',
       expertise: ['Agile Coaching', 'Sprint Planning', 'Team Facilitation']
     }

@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './VideoTestimonials.module.scss';
 import NextVideo from 'next-video';
 // Import your video files
@@ -10,7 +11,9 @@ import ChiefNwogbeVideo from '../../../videos/gideon-veed.mp4';
 
 const VideoTestimonials = () => {
     const [activeVideo, setActiveVideo] = useState<number | null>(null);
+    const [isHovered, setIsHovered] = useState(false);
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+    const router = useRouter();
 
     const testimonials = [
         {
@@ -47,6 +50,10 @@ const VideoTestimonials = () => {
 
     const handleVideoEnd = (index: number) => {
         setActiveVideo(null);
+    };
+
+    const handleViewAllTestimonials = () => {
+        router.push('/testimonials');
     };
 
     return (
@@ -141,6 +148,32 @@ const VideoTestimonials = () => {
                         <div className={styles.statNumber}>5★</div>
                         <div className={styles.statLabel}>Average Rating</div>
                     </div>
+                </div>
+
+                {/* Navigation Button */}
+                <div className={styles.navigationSection}>
+                    <button 
+                        className={styles.navigationButton}
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                        onClick={handleViewAllTestimonials}
+                    >
+                        <span className={styles.buttonText}>View All Testimonials</span>
+                        <div className={styles.buttonHoverEffect}></div>
+                        <div className={styles.buttonIcon}>
+                            <svg 
+                                width="20" 
+                                height="20" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                strokeWidth="2"
+                            >
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                        <div className={`${styles.buttonSparkle} ${isHovered ? styles.active : ''}`}></div>
+                    </button>
                 </div>
             </div>
         </section>
