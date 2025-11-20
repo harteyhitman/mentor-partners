@@ -2,12 +2,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './FoundersNote.module.scss';
 import NextVideo from 'next-video';
 import FoundersNoteVideo from '../../../videos/medium-vecteezy_technology-artificial-intelligence-concept_4747810_medium.mp4';
 
 const FoundersNote = () => {
   const [activeAchievement, setActiveAchievement] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
 
   const achievements = [
     {
@@ -50,6 +53,10 @@ const FoundersNote = () => {
     return () => clearInterval(interval);
   }, [achievements.length]);
 
+  const handleViewFullStory = () => {
+    router.push('/founder-story');
+  };
+
   return (
     <section className={styles.foundersNote}>
       {/* Animated Background Elements */}
@@ -84,8 +91,6 @@ const FoundersNote = () => {
                 <NextVideo 
                   src={FoundersNoteVideo}
                   className={styles.videoPlayer}
-                //   autoPlay
-                //   muted
                   loop
                   controls
                 />
@@ -212,6 +217,32 @@ const FoundersNote = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Navigation Button */}
+        <div className={styles.navigationSection}>
+          <button 
+            className={styles.navigationButton}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={handleViewFullStory}
+          >
+            <span className={styles.buttonText}>Discover Full Founder Story</span>
+            <div className={styles.buttonHoverEffect}></div>
+            <div className={styles.buttonIcon}>
+              <svg 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+            <div className={`${styles.buttonSparkle} ${isHovered ? styles.active : ''}`}></div>
+          </button>
         </div>
       </div>
     </section>
