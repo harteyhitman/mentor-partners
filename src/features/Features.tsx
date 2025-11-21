@@ -6,6 +6,7 @@ import HeroSection from '../components/HeroSection/HeroSection'
 import LearningJourney from '../components/LearningJourney'
 import MentorsSection from '../components/MentorsSection/MentorsSection'
 import PopularCourses from '../components/PopularCourses/PopularCourses'
+import TestimonialsSlider from '../components/Testimonials/Testimonials'
 import VideoTestimonials from '../components/VideoTestimonials/VideoTestimonials'
 import PendoSections from '../components/WhoWeServe/WhoWeServe'
 import { coursesData } from '../data/courses'
@@ -18,14 +19,16 @@ const Features = () => {
       <InfiniteCarousel />
       <LearningJourney />
       <CoreFeatures />
-      <PopularCourses
+       <PopularCourses 
         courses={coursesData}
-        title="Popular Courses"
-        subtitle="Boost productivity, reduce costs, 
-        and drive growth with our specialized courses"
+        title="Featured Programs"
+        subtitle="Start your learning journey with our most popular programs"
+        maxCards={6}
       />
+      
       <PendoSections />
       <FoundersNote />
+       <TestimonialsSlider />
       <VideoTestimonials />
       <MentorsSection />
        <FAQSection />

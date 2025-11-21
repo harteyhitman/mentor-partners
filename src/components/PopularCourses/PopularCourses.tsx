@@ -1,4 +1,6 @@
-// components/PopularCourses.tsx
+// components/PopularCourses/PopularCourses.tsx
+'use client';
+
 import { Course } from '../../types/course';
 import CourseCard from './CourseCard';
 import styles from './PopularCourses.module.scss';
@@ -13,21 +15,21 @@ interface PopularCoursesProps {
 
 const PopularCourses: React.FC<PopularCoursesProps> = ({
   courses,
-  title = "Popular Courses",
-  subtitle = "Master new skills with our expert-led courses",
+  title = "Popular Programs",
+  subtitle = "Master new skills with our expert-led programs",
   viewAllLink = "/courses",
   maxCards = 6 // Default to 6 cards
 }) => {
-  // Get featured courses first, then take up to maxCards
+  // Get popular courses (featured or isPopular), then take up to maxCards
   const displayCourses = courses
-    .filter(course => course.featured)
+    .filter(course => course.featured || course.isPopular)
     .slice(0, maxCards);
 
-  // If we don't have enough featured courses, fill with regular courses
+  // If we don't have enough popular courses, fill with regular courses
   if (displayCourses.length < maxCards) {
     const remainingSlots = maxCards - displayCourses.length;
     const additionalCourses = courses
-      .filter(course => !course.featured)
+      .filter(course => !course.featured && !course.isPopular)
       .slice(0, remainingSlots);
     
     displayCourses.push(...additionalCourses);
@@ -40,13 +42,13 @@ const PopularCourses: React.FC<PopularCoursesProps> = ({
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.subtitle}>{subtitle}</p>
           <a href={viewAllLink} className={styles.viewAllLink}>
-            View All Courses →
+            View All Programs →
           </a>
         </div>
         
         <div className={styles.coursesGrid}>
           {displayCourses.map(course => (
-            <CourseCard key={course.id} course={course} layout="grid" />
+            <CourseCard key={course.id} course={course} />
           ))}
         </div>
       </div>

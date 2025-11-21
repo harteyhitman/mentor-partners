@@ -1,77 +1,78 @@
-// components/PopularCourses.module.scss
+// components/PopularCourses/PopularCourses.module.scss
+@use '../../styles/variables' as *;
+
 .popularCourses {
   padding: 4rem 0;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, $gray-50 0%, $white 50%, $gray-50 100%);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $border-color, transparent);
+  }
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-  
-  @media (max-width: 768px) {
-    padding: 0 1rem;
-  }
 }
 
 .header {
   text-align: center;
   margin-bottom: 3rem;
+  position: relative;
 }
+
 .title {
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1.5rem;
-  line-height: 4.1rem;
+  color: $primary;
+  margin-bottom: 1rem;
+  line-height: 1.2;
   
-  @media (max-width: 1024px) {
-    font-size: 3rem;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 25px;
-    margin-bottom: 0.75rem;
+  @include mobile {
+    font-size: 2rem;
   }
 }
-// .title {
-//   font-size: 2.5rem;
-//   font-weight: 700;
-//   color: #1a202c;
-//   margin-bottom: 1rem;
-  
-//   @media (max-width: 768px) {
-//     font-size: 2rem;
-//   }
-// }
 
 .subtitle {
   font-size: 1.2rem;
-  color: #718096;
+  color: $text-secondary;
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
+  
+  @include mobile {
+    font-size: 1.1rem;
+  }
 }
 
 .viewAllLink {
-  display: inline-block;
-  color: #3182ce;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $primary;
   font-weight: 600;
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid $primary;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
   
   &:hover {
-    color: #2c5aa0;
+    background: $primary;
+    color: $white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
   }
 }
 
@@ -80,8 +81,36 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
   
-  @media (max-width: 768px) {
+  @include tablet {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  
+  @include mobile {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+}
+
+// Ensure modal overlays work correctly in the grid context
+:global(.courseCard) {
+  position: relative;
+}
+
+:global(.modalOverlay) {
+  position: fixed;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .popularCourses {
+    padding: 3rem 0;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .coursesGrid {
+    grid-template-columns: 1fr;
   }
 }

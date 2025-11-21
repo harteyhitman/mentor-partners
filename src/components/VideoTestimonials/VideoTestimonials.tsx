@@ -130,7 +130,7 @@ const VideoTestimonials = () => {
                     ))}
                 </div>
 
-                {/* Stats Section - Enhanced Styling */}
+                {/* Stats Section - Enhanced Styling
                 <div className={styles.statsSection}>
                     <div className={styles.statItem}>
                         <div className={styles.statNumber}>500+</div>
@@ -148,9 +148,9 @@ const VideoTestimonials = () => {
                         <div className={styles.statNumber}>5★</div>
                         <div className={styles.statLabel}>Average Rating</div>
                     </div>
-                </div>
-
+                </div> */}
                 {/* Navigation Button */}
+
                 <div className={styles.navigationSection}>
                     <button 
                         className={styles.navigationButton}

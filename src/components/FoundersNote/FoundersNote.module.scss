@@ -152,7 +152,9 @@
   margin-bottom: 6rem;
 
   @include tablet {
-    gap: 3rem;
+     display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem;
   }
 
   @include mobile {
@@ -323,21 +325,21 @@
   position: relative;
   padding: 2rem 0;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(to bottom, $primary, $secondary);
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  //   width: 2px;
+  //   height: 100%;
+  //   background: linear-gradient(to bottom, $primary, $secondary);
 
     @include mobile {
       left: 30px;
     }
   }
-}
+// }
 
 .timelineItem {
   display: flex;

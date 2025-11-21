@@ -4,6 +4,7 @@ import { Course } from '../../../types/course';
 import { coursesData } from '../../../data/courses';
 import Link from 'next/link';
 import styles from './[slug].module.scss';
+import Image from 'next/image';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -104,7 +105,7 @@ const CourseDetailPage = async ({ params }: PageProps) => {
             </div>
 
             <div className={styles.heroImage}>
-              <img src={course.image} alt={course.title} />
+              <Image src={course.image} alt={course.title} />
               {course.featured && <span className={styles.featuredBadge}>Featured</span>}
             </div>
           </div>
@@ -140,7 +141,7 @@ const CourseDetailPage = async ({ params }: PageProps) => {
           <div className={styles.sidebar}>
             <div className={styles.courseCard}>
               <div className={styles.cardImage}>
-                <img src={course.image} alt={course.title} />
+                <Image src={course.image} alt={course.title} />
               </div>
               <div className={styles.cardContent}>
                 <div className={styles.price}>
