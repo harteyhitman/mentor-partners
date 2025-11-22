@@ -1,0 +1,688 @@
+.testimonialsPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  color: white;
+}
+
+// Hero Section
+.hero {
+  position: relative;
+  padding: 6rem 0 3rem;
+  overflow: hidden;
+
+  .heroBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    .floatingOrb1 {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floatingOrb2 {
+      position: absolute;
+      top: 60%;
+      right: 10%;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    .floatingOrb3 {
+      position: absolute;
+      bottom: 20%;
+      left: 20%;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+      animation: float 10s ease-in-out infinite;
+    }
+  }
+
+  .heroContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .heroText {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .heroSubtitle {
+    font-size: 1.25rem;
+    color: #9ca3af;
+    line-height: 1.6;
+  }
+}
+
+// Featured Section
+.featuredSection {
+  padding: 3rem 0;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .featuredHeader {
+    margin-bottom: 1.5rem;
+  }
+
+  .featuredLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3b82f6;
+  }
+
+  .featuredCard {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .featuredContent {
+    .featuredName {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .featuredRole {
+      font-size: 1.125rem;
+      color: #3b82f6;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .featuredQuote {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #e5e7eb;
+      line-height: 1.6;
+      margin: 0;
+      border-left: 3px solid #3b82f6;
+      padding-left: 1.5rem;
+    }
+  }
+
+  .featuredActions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 200px;
+  }
+
+  .primaryButton {
+    background: linear-gradient(135deg, #3b82f6, #ec4899);
+    color: white;
+    border: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+  }
+
+  .secondaryButton {
+    background: transparent;
+    color: #9ca3af;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+  }
+}
+
+// Main Content
+.mainContent {
+  padding: 3rem 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+}
+
+// Selected Video Section
+.selectedVideoSection {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  animation: slideDown 0.3s ease-out;
+
+  .selectedVideoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .selectedVideoTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+  }
+
+  .closeButton {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #9ca3af;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+  }
+
+  .selectedVideoContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    min-height: 400px;
+  }
+
+  .videoPlayerWrapper {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .videoPlayer {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .videoDetails {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
+
+    .videoPersonName {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .videoPersonRole {
+      font-size: 1rem;
+      color: #3b82f6;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    .videoPersonCompany {
+      font-size: 0.875rem;
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+    }
+
+    .videoDescription {
+      margin-bottom: 1.5rem;
+
+      p {
+        color: #d1d5db;
+        line-height: 1.6;
+        margin: 0;
+      }
+    }
+
+    .videoQuote {
+      font-style: italic;
+      color: #e5e7eb;
+      line-height: 1.6;
+      margin: 0;
+      border-left: 2px solid #3b82f6;
+      padding-left: 1rem;
+    }
+  }
+}
+
+// Filter Section
+.filterSection {
+  margin-bottom: 2rem;
+
+  .filterTabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filterTab {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #9ca3af;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+
+    &.active {
+      background: linear-gradient(135deg, #3b82f6, #ec4899);
+      border-color: transparent;
+      color: white;
+    }
+  }
+}
+
+// Testimonials Grid
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonialCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  &.active {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  }
+
+  // Video Card Styles
+  &.videoCard {
+    .videoCardContent {
+      .videoThumbnail {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        background: #000;
+
+        .thumbnailVideo {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        .playButton {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: rgba(0, 0, 0, 0.7);
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          transition: all 0.3s ease;
+          opacity: 0.9;
+        }
+
+        .videoOverlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.8));
+        }
+
+        &:hover {
+          .thumbnailVideo {
+            transform: scale(1.05);
+          }
+
+          .playButton {
+            background: rgba(59, 130, 246, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+          }
+        }
+      }
+
+      .videoCardInfo {
+        padding: 1.5rem;
+
+        .cardName {
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: white;
+          margin-bottom: 0.5rem;
+        }
+
+        .cardRole {
+          font-size: 0.875rem;
+          color: #3b82f6;
+          margin-bottom: 0.75rem;
+          font-weight: 500;
+        }
+
+        .cardQuote {
+          font-size: 0.95rem;
+          color: #d1d5db;
+          line-height: 1.5;
+          margin: 0;
+          font-style: italic;
+        }
+      }
+    }
+  }
+
+  // Text Card Styles
+  &.textCard {
+    .textCardContent {
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .quoteIcon {
+        font-size: 2rem;
+        color: #3b82f6;
+        margin-bottom: 1rem;
+        line-height: 1;
+      }
+
+      .textQuote {
+        font-size: 1.125rem;
+        font-style: italic;
+        color: #e5e7eb;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .textCardInfo {
+        .cardName {
+          font-size: 1rem;
+          font-weight: 600;
+          color: white;
+          margin: 0;
+        }
+
+        .cardRole {
+          font-size: 0.875rem;
+          color: #9ca3af;
+          margin: 0.25rem 0 0 0;
+        }
+      }
+    }
+  }
+}
+
+// CTA Section
+.ctaSection {
+  padding: 6rem 0;
+  background: rgba(255, 255, 255, 0.02);
+  text-align: center;
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .ctaContent {
+    .ctaTitle {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .ctaDescription {
+      font-size: 1.125rem;
+      color: #9ca3af;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .ctaButtons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .ctaPrimary {
+      background: linear-gradient(135deg, #3b82f6, #ec4899);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
+      }
+    }
+
+    .ctaSecondary {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #3b82f6;
+        background: rgba(59, 130, 246, 0.1);
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 0 2rem;
+
+    .heroTitle {
+      font-size: 2rem;
+    }
+
+    .heroSubtitle {
+      font-size: 1.125rem;
+    }
+  }
+
+  .featuredCard {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 2rem !important;
+
+    .featuredName {
+      font-size: 1.5rem !important;
+    }
+
+    .featuredQuote {
+      font-size: 1.125rem !important;
+    }
+  }
+
+  .selectedVideoContainer {
+    grid-template-columns: 1fr !important;
+  }
+
+  .videoDetails {
+    padding: 1.5rem !important;
+  }
+
+  .testimonialsGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ctaTitle {
+    font-size: 2rem !important;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+    
+    button {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero .heroTitle {
+    font-size: 1.75rem;
+  }
+
+  .filterTabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .featuredActions {
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .heroBackground .floatingOrb1,
+  .heroBackground .floatingOrb2,
+  .heroBackground .floatingOrb3 {
+    animation: none;
+  }
+
+  .testimonialCard,
+  .featuredCard,
+  .filterTab,
+  .ctaPrimary,
+  .ctaSecondary {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+
+  .selectedVideoSection {
+    animation: none;
+  }
+}

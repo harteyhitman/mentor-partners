@@ -1,0 +1,478 @@
+.serviceDetailPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// Hero Section
+.hero {
+  padding: 6rem 0 4rem;
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: #9ca3af;
+
+    .breadcrumbLink {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #60a5fa;
+      }
+    }
+
+    .breadcrumbSeparator {
+      color: #6b7280;
+    }
+
+    .breadcrumbCurrent {
+      color: #d1d5db;
+    }
+  }
+
+  .heroContent {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+
+  .heroDescription {
+    font-size: 1.25rem;
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .serviceMeta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    .metaItem {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .metaLabel {
+      font-size: 0.875rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .metaValue {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #3b82f6;
+    }
+  }
+
+  .heroActions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .primaryButton {
+      background: linear-gradient(135deg, #3b82f6, #ec4899);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+      }
+    }
+
+    .secondaryButton {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #3b82f6;
+        background: rgba(59, 130, 246, 0.1);
+      }
+    }
+  }
+
+  .heroVisual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .serviceIcon {
+      .defaultIcon {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #3b82f6, #ec4899);
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+    }
+  }
+}
+
+// Common Section Styles
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+// Features Section
+.featuresSection {
+  padding: 4rem 0;
+  background: rgba(255, 255, 255, 0.02);
+
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .featureItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      transform: translateY(-2px);
+    }
+  }
+
+  .featureIcon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #3b82f6, #ec4899);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .featureText {
+    color: #d1d5db;
+    line-height: 1.5;
+  }
+}
+
+// Benefits Section
+.benefitsSection {
+  padding: 4rem 0;
+
+  .benefitsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .benefitCard {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: rgba(59, 130, 246, 0.3);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .benefitTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .benefitDescription {
+    color: #d1d5db;
+    line-height: 1.6;
+  }
+}
+
+// Process Section
+.processSection {
+  padding: 4rem 0;
+  background: rgba(255, 255, 255, 0.02);
+
+  .processSteps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .processStep {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      transform: translateX(10px);
+    }
+  }
+
+  .stepNumber {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #3b82f6, #ec4899);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .stepContent {
+    flex: 1;
+  }
+
+  .stepTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .stepDescription {
+    color: #d1d5db;
+    line-height: 1.6;
+  }
+}
+
+// CTA Section
+.ctaSection {
+  padding: 6rem 0;
+  text-align: center;
+
+  .ctaContent {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .ctaTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .ctaDescription {
+    font-size: 1.125rem;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .ctaButtons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .ctaPrimary {
+    background: linear-gradient(135deg, #3b82f6, #ec4899);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
+    }
+  }
+
+  .ctaSecondary {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.1);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 0 2rem;
+
+    .heroContent {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .heroTitle {
+      font-size: 2.5rem;
+    }
+
+    .heroDescription {
+      font-size: 1.125rem;
+    }
+
+    .serviceMeta {
+      justify-content: center;
+    }
+
+    .heroActions {
+      justify-content: center;
+    }
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .processStep {
+    flex-direction: column;
+    text-align: center;
+    
+    &:hover {
+      transform: translateY(-5px) !important;
+    }
+  }
+
+  .ctaTitle {
+    font-size: 2rem !important;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+    
+    button, a {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero .heroTitle {
+    font-size: 2rem;
+  }
+
+  .serviceMeta {
+    flex-direction: column;
+    gap: 1rem !important;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+  }
+}
+
+// Focus styles for accessibility
+.serviceCard:focus-visible,
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible,
+.ctaPrimary:focus-visible,
+.ctaSecondary:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .serviceCard,
+  .featureItem,
+  .benefitCard,
+  .processStep,
+  .primaryButton,
+  .secondaryButton,
+  .ctaPrimary,
+  .ctaSecondary {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+}

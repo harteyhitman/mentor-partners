@@ -1,4 +1,3 @@
-// components/VideoTestimonials/VideoTestimonials.tsx
 'use client';
 
 import { useState, useRef } from 'react';
@@ -43,13 +42,36 @@ const VideoTestimonials = () => {
         videoRefs.current.forEach((video, i) => {
             if (video && i !== index) {
                 video.pause();
+                video.currentTime = 0; // Reset to beginning
             }
         });
         setActiveVideo(index);
     };
 
+    const handleVideoPause = (index: number) => {
+        if (activeVideo === index) {
+            setActiveVideo(null);
+        }
+    };
+
     const handleVideoEnd = (index: number) => {
         setActiveVideo(null);
+        // Reset the video to beginning
+        const video = videoRefs.current[index];
+        if (video) {
+            video.currentTime = 0;
+        }
+    };
+
+    const handleCardClick = (index: number) => {
+        const video = videoRefs.current[index];
+        if (video) {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
     };
 
     const handleViewAllTestimonials = () => {
@@ -85,44 +107,73 @@ const VideoTestimonials = () => {
                 {/* Video Testimonials Grid */}
                 <div className={styles.testimonialsGrid}>
                     {testimonials.map((testimonial, index) => (
-                        <div key={testimonial.id} className={styles.testimonialCard}>
-                            {/* Video Container - Fixed for full display */}
-                            <div className={styles.videoSection}>
-                                <div className={styles.videoContainer}>
-                                    <div className={styles.videoWrapper}>
-                                        <NextVideo
-                                            ref={(el) => {
-                                                videoRefs.current[index] = el;
-                                            }}
-                                            src={testimonial.video}
-                                            className={styles.videoPlayer}
-                                            // poster={testimonial.thumbnail}
-                                            controls
-                                            onPlay={() => handleVideoPlay(index)}
-                                            onEnded={() => handleVideoEnd(index)}
-                                        />
+                        <div 
+                            key={testimonial.id} 
+                            className={`${styles.testimonialCard} ${activeVideo === index ? styles.playing : ''}`}
+                        >
+                            <div className={styles.videoCardContent}>
+                                <div 
+                                    className={styles.videoThumbnail}
+                                    onClick={() => handleCardClick(index)}
+                                >
+                                    <NextVideo
+                                        ref={(el) => {
+                                            videoRefs.current[index] = el;
+                                        }}
+                                        src={testimonial.video}
+                                        className={styles.thumbnailVideo}
+                                        // muted
+                                        loop={false}
+                                        playsInline
+                                        onPlay={() => handleVideoPlay(index)}
+                                        onPause={() => handleVideoPause(index)}
+                                        onEnded={() => handleVideoEnd(index)}
+                                    />
+                                    {/* Play/Pause Overlay */}
+                                    <div className={`${styles.videoOverlay} ${activeVideo === index ? styles.playing : ''}`}>
+                                        {activeVideo !== index && (
+                                            <div className={styles.playButton}>
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M5 3l14 9-14 9V3z"/>
+                                                </svg>
+                                            </div>
+                                        )}
+                                        {activeVideo === index && (
+                                            <div className={styles.pauseButton}>
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <rect x="6" y="4" width="4" height="16"/>
+                                                    <rect x="14" y="4" width="4" height="16"/>
+                                                </svg>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
-                            </div>
-
-                            {/* Testimonial Content */}
-                            <div className={styles.testimonialContent}>
-                                <div className={styles.quoteSection}>
-                                    <div className={styles.quoteIcon}>❝</div>
-                                    <blockquote className={styles.quote}>
-                                        {testimonial.quote}
-                                    </blockquote>
-                                </div>
-
-                                <div className={styles.testimonialInfo}>
-                                    <div className={styles.personInfo}>
-                                        <h3 className={styles.personName}>{testimonial.name}</h3>
-                                        <p className={styles.personRole}>{testimonial.role}</p>
-                                        <p className={styles.personCompany}>{testimonial.company}</p>
-                                    </div>
-
-                                    <div className={styles.description}>
-                                        <p>{testimonial.description}</p>
+                                <div className={styles.videoCardInfo}>
+                                    <h4 className={styles.cardName}>{testimonial.name}</h4>
+                                    <p className={styles.cardRole}>{testimonial.role}</p>
+                                    <p className={styles.cardQuote}>"{testimonial.quote}"</p>
+                                    <div className={styles.videoControls}>
+                                        <button 
+                                            className={styles.controlButton}
+                                            onClick={() => handleCardClick(index)}
+                                        >
+                                            {activeVideo === index ? (
+                                                <>
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                        <rect x="6" y="4" width="4" height="16"/>
+                                                        <rect x="14" y="4" width="4" height="16"/>
+                                                    </svg>
+                                                    Pause
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                        <path d="M5 3l14 9-14 9V3z"/>
+                                                    </svg>
+                                                    Play Video
+                                                </>
+                                            )}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -130,27 +181,7 @@ const VideoTestimonials = () => {
                     ))}
                 </div>
 
-                {/* Stats Section - Enhanced Styling
-                <div className={styles.statsSection}>
-                    <div className={styles.statItem}>
-                        <div className={styles.statNumber}>500+</div>
-                        <div className={styles.statLabel}>Happy Families</div>
-                    </div>
-                    <div className={styles.statItem}>
-                        <div className={styles.statNumber}>98%</div>
-                        <div className={styles.statLabel}>Satisfaction Rate</div>
-                    </div>
-                    <div className={styles.statItem}>
-                        <div className={styles.statNumber}>50+</div>
-                        <div className={styles.statLabel}>Communities Served</div>
-                    </div>
-                    <div className={styles.statItem}>
-                        <div className={styles.statNumber}>5★</div>
-                        <div className={styles.statLabel}>Average Rating</div>
-                    </div>
-                </div> */}
                 {/* Navigation Button */}
-
                 <div className={styles.navigationSection}>
                     <button 
                         className={styles.navigationButton}

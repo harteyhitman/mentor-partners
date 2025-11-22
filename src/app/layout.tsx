@@ -1,18 +1,18 @@
 // src/app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+// import { Inter, Playfair_Display } from 'next/font/google';
 import Favicon from '../components/Favicon/Favicon';
 import '../styles/globals.scss';
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-primary',
-});
+// const inter = Inter({ 
+//   subsets: ['latin'],
+//   variable: '--font-primary',
+// });
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-heading',
-});
+// const playfair = Playfair_Display({
+//   subsets: ['latin'],
+//   variable: '--font-heading',
+// });
 
 export const metadata: Metadata = {
   title: 'Mentor Partners - The Upskilling Marketplace',
@@ -30,8 +30,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" >
+      
       <head>
+            <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         <Favicon />
       </head>
       <body>

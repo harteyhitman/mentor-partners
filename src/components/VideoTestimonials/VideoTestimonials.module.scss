@@ -1,4 +1,3 @@
-// components/VideoTestimonials/VideoTestimonials.module.scss
 .videoTestimonials {
   position: relative;
   padding: 6rem 0;
@@ -111,8 +110,8 @@
   // Testimonials Grid
   .testimonialsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
     margin-bottom: 4rem;
   }
 
@@ -123,155 +122,146 @@
     border-radius: 1rem;
     overflow: hidden;
     transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
+    cursor: pointer;
 
     &:hover {
       transform: translateY(-5px);
       border-color: rgba(59, 130, 246, 0.3);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    &.playing {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
     }
   }
 
-  // Video Section - Fixed for full display
-  .videoSection {
-    width: 100%;
-    flex-shrink: 0;
-  }
-
-  .videoContainer {
-    position: relative;
-    width: 100%;
-    background: #000; // Black background for video area
-  }
-
-  .videoWrapper {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; // 16:9 aspect ratio
-    overflow: hidden;
-    height: 540px;
-
-    .videoPlayer {
-      position: absolute;
-      top: 0;
-      left: 0;
+  // Video Card Content
+  .videoCardContent {
+    .videoThumbnail {
+      position: relative;
       width: 100%;
-      object-fit: contain; // Changed from 'cover' to 'contain' to show full video
+      height: 400px;
+      overflow: hidden;
       background: #000;
-      
-      // Ensure video controls are visible
-      &::-webkit-media-controls-panel {
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+      cursor: pointer;
+
+      .thumbnailVideo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
       }
-      
-      &::-webkit-media-controls-play-button,
-      &::-webkit-media-controls-volume-slider,
-      &::-webkit-media-controls-mute-button {
-        filter: invert(1);
+
+      .videoOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.8));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        opacity: 1;
+
+        &.playing {
+          opacity: 0;
+          pointer-events: none;
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+
+        &:hover {
+          background: linear-gradient(transparent 30%, rgba(0, 0, 0, 0.9));
+          
+          .playButton,
+          .pauseButton {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(59, 130, 246, 0.9);
+          }
+        }
+      }
+
+      .playButton,
+      .pauseButton {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all 0.3s ease;
+        opacity: 0.9;
+      }
+
+      &:hover {
+        .thumbnailVideo {
+          transform: scale(1.05);
+        }
       }
     }
-  }
 
-  .testimonialContent {
-    padding: 2rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    .videoCardInfo {
+      padding: 1.5rem;
 
-    .quoteSection {
-      margin-bottom: 1.5rem;
-
-      .quoteIcon {
-        font-size: 2rem;
-        color: #3b82f6;
-        margin-bottom: 0.5rem;
-        line-height: 1;
-      }
-
-      .quote {
+      .cardName {
         font-size: 1.125rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+
+      .cardRole {
+        font-size: 0.875rem;
+        color: #3b82f6;
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+      }
+
+      .cardQuote {
+        font-size: 0.95rem;
+        color: #d1d5db;
+        line-height: 1.5;
+        margin: 0 0 1rem 0;
         font-style: italic;
-        color: #e5e7eb;
-        line-height: 1.6;
-        margin: 0;
       }
-    }
 
-    .testimonialInfo {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-
-      .personInfo {
-        margin-bottom: 1rem;
-
-        .personName {
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: white;
-          margin: 0 0 0.25rem 0;
-        }
-
-        .personRole {
-          font-size: 0.875rem;
+      .videoControls {
+        .controlButton {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(59, 130, 246, 0.1);
+          border: 1px solid rgba(59, 130, 246, 0.3);
           color: #3b82f6;
-          margin: 0 0 0.25rem 0;
-          font-weight: 500;
-        }
-
-        .personCompany {
+          padding: 0.5rem 1rem;
+          border-radius: 6px;
           font-size: 0.875rem;
-          color: #9ca3af;
-          margin: 0;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            transform: translateY(-1px);
+          }
+
+          svg {
+            flex-shrink: 0;
+          }
         }
       }
-
-      .description {
-        margin-top: auto;
-        
-        p {
-          color: #d1d5db;
-          line-height: 1.6;
-          margin: 0;
-          font-size: 0.95rem;
-        }
-      }
-    }
-  }
-
-  // Stats Section
-  .statsSection {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    padding: 3rem 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 3rem;
-  }
-
-  .statItem {
-    text-align: center;
-
-    .statNumber {
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #3b82f6, #ec4899);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
-    }
-
-    .statLabel {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
   }
 
@@ -400,31 +390,8 @@
     }
 
     .testimonialsGrid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .testimonialCard {
-      margin: 0;
-    }
-
-    .videoWrapper {
-      padding-bottom: 56.25%; // Maintain 16:9 on mobile
-    }
-
-    .testimonialContent {
-      padding: 1.5rem;
-    }
-
-    .statsSection {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
-      padding: 2rem 1rem;
-      margin-bottom: 2rem;
-
-      .statItem .statNumber {
-        font-size: 2rem;
-      }
     }
 
     .navigationButton {
@@ -449,15 +416,6 @@
       grid-template-columns: 1fr;
     }
 
-    .testimonialContent {
-      padding: 1.25rem;
-    }
-    
-    .statsSection {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
     .navigationButton {
       width: 100%;
       justify-content: center;
@@ -472,6 +430,12 @@
   border-radius: 50px;
 }
 
+.testimonialCard:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+  border-radius: 1rem;
+}
+
 // Reduced motion support
 @media (prefers-reduced-motion: reduce) {
   .videoTestimonials {
@@ -484,6 +448,18 @@
     .testimonialCard,
     .navigationButton {
       transition: none;
+      
+      &:hover {
+        transform: none;
+      }
+    }
+
+    .videoThumbnail {
+      .thumbnailVideo,
+      .playButton,
+      .pauseButton {
+        transition: none;
+      }
     }
 
     .navigationButton:hover {
